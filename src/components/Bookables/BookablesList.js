@@ -8,9 +8,16 @@ export default function BookablesList() {
     const bookablesInGroup = bookables.filter(b => b.group === group);
     const [bookableIndex, setBookableIndex] = useState(1); 
 
+    let bIndex = 1;
+
     function changeBookable(selectedIndex) {
         setBookableIndex(selectedIndex);
-        console.log(selectedIndex);
+        console.log(bookableIndex);
+    }
+
+    function changebIndex(selectedIndex) {
+        bIndex = selectedIndex;
+        console.log(bIndex);
     }
 
     return (
@@ -19,9 +26,24 @@ export default function BookablesList() {
                 <li key={b.id} className={i === bookableIndex ? "selected" : null}>
                     <button className="btn"
                         onClick={() => changeBookable(i)}
-                    > {b.title} </button>
+                    > 
+                        {b.title} 
+                    </button>
                 </li>
             ))}
         </ul>
     );
+
+    // return (
+    //     <ul className="bookables items-list-nav">
+    //         {bookablesInGroup.map((b, i) => (
+    //             <li key={b.id} className={i === bIndex ? "selected" : null}>
+    //                 <button className="btn"  onClick={() => changebIndex(i)}
+    //                 > 
+    //                     {b.title} 
+    //                 </button>
+    //             </li>
+    //         ))}
+    //     </ul>
+    // );
 }
